@@ -46,8 +46,8 @@ db.Query()           // 查询多个文档(默认超时上下文)
 db.QueryContext()    // 查询多个文档(指定上下文)
 db.Exec()            // 非查询操作(默认超时上下文)
 db.ExecContext()     // 非查询操作(指定上下文)
-db.PrepareSql()         // 批量操作(默认超时上下文)
-db.PrepareContext()         // 批量操作(指定上下文)
+db.PrepareSql()      // 批量操作(默认超时上下文)
+db.PrepareContext()  // 批量操作(指定上下文)
 ```
 
 ## 使用示例
