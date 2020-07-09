@@ -49,10 +49,8 @@ components:
 
 rabbitMq.ExchangeDeclare(dftExchange ...*rabbitmq.ExchangeData)               // 定义交换机
 rabbitMq.Publish(opCode, data)           // 发布数据
-PublishExchange(serviceName, exchangeName, exchangeType, opCode string, data interface{}, dftOpUid ...string) // 发布数据到指定交换机
 rabbitMq.GetConsumeChannelBox()          // 获取消费者RabbitMq channal对象
-rabbitMq.Consume(key, val)              // 获取消息，返回go channel
-ConsumeExchange(exchangeName, exchangeType, queueName string, opCodes []string, limit int, autoAck, noWait, exclusive bool) //从指定交换机,获取消息，返回go channel 
+rabbitMq.Consume(key, val)              // 获取消息，返回go channel 
 rabbitMq.DecodeBody(d,ret)              // 解析内容,通过指针引用方式
 rabbitMq.DecodeHeaders(d)               // 直接返回header
 
