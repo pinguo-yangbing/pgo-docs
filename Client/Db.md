@@ -46,8 +46,8 @@ db.Query()           // 查询多个文档(默认超时上下文)
 db.QueryContext()    // 查询多个文档(指定上下文)
 db.Exec()            // 非查询操作(默认超时上下文)
 db.ExecContext()     // 非查询操作(指定上下文)
-db.Prepare()         // 批量操作(默认超时上下文)
-db.Prepare()         // 批量操作(指定上下文)
+db.PrepareSql()         // 批量操作(默认超时上下文)
+db.PrepareContext()         // 批量操作(指定上下文)
 ```
 
 ## 使用示例
@@ -95,15 +95,15 @@ func (m *MysqlController) ActionQuery() {
     }
 }
 
-// 使用db.Prepare/db.PrepareContext来执行批量操作，默认查询操作在
+// 使用db.PrepareSql/db.PrepareContext来执行批量操作，默认查询操作在
 // 从库上进行，其余操作在主库上进行，若当前db对象有过其它操作，则查询
 // 操作会复用之前的连接。
-func (m *MysqlController) ActionPrepare() {
+func (m *MysqlController) ActionPrepareSql() {
     // 获取db的上下文适配对象
     db := m.GetObject(Db.AdapterClass).(*Db.Adapter)
 
     query := "INSERT INTO test (name, age) VALUES (?, ?)"
-    stmt := db.Prepare(query)
+    stmt := db.PrepareSql(query)
     defer stmt.Close()
 
     for i := 0; i < 10; i++ {
